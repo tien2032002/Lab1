@@ -117,6 +117,7 @@ int main(void)
  8000160:	607b      	str	r3, [r7, #4]
   while (1)
   {
+	  //status=0: red on, yellow off
 	  if (led_status==0) {
  8000162:	687b      	ldr	r3, [r7, #4]
  8000164:	2b00      	cmp	r3, #0
@@ -136,6 +137,7 @@ int main(void)
  800017c:	f000 fbf6 	bl	800096c <HAL_GPIO_WritePin>
  8000180:	e00e      	b.n	80001a0 <main+0x54>
 	  }
+	  //status=1: red off, yellow on
 	  else if (led_status==1) {
  8000182:	687b      	ldr	r3, [r7, #4]
  8000184:	2b01      	cmp	r3, #1

@@ -94,11 +94,13 @@ int main(void)
   int led_status=0;//0: red on; 1:yellow on
   while (1)
   {
+	  //status=0: red on, yellow off
 	  if (led_status==0) {
 		  led_status=1;// change status
 		  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET); //turn on red
 		  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);// turn off yellow
 	  }
+	  //status=1: red off, yellow on
 	  else if (led_status==1) {
 		  led_status=0;// change status
 		  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET); //turn off red
