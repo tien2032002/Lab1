@@ -57,6 +57,7 @@ void display7SEG(int num);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void display7SEG(int num) {
+	//bat tat cac chan seg de hien thi so tuong ung
 	//0: a, b, c ,d ,e, f=0, g=1
 	if (num==0) {
 		HAL_GPIO_WritePin(SEG0_GPIO_Port, SEG0_Pin, GPIO_PIN_RESET);
@@ -209,6 +210,7 @@ int main(void)
 
   while (1)
   {
+	  //test display7seg()
 	  if( counter >= 10) counter = 0;
 	  display7SEG ( counter ++) ;
 	  HAL_Delay (1000) ;
