@@ -92,22 +92,26 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   int led_status=2;//0: red on, 1: green on; 2: yellow on
-  int counter=5;
+  int counter=5;// bien dem thoi gian sang cua den
   int time[3]={2, 3, 5}; //light cycle red->green->yellow
   while (1)
   {
-	 counter--;
+	 counter--; //giam counter
+	 //bat tat cac den tuy thuoc vao led status
 	 switch (led_status) {
+	 	 //bat den do, tat den xanh, vang
 	 	 case 2:
 	 		 HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);//turn on red
 	 		 HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);//turn off yellow
 	 		 HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);//turn off green
 		 break;
+		 //bat den xanh, tat den do, vang
 	 	 case 1:
 	 		 HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);//turn off red
 	 		 HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);//turn off yellow
 	 		 HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);//turn on green
 		 break;
+		 //bat den vang, tat den xanh, do
 	 	 case 0:
 	 		 HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);//turn off red
 	 		 HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);//turn on yellow
@@ -116,13 +120,14 @@ int main(void)
 	 	 default:
 	 		 break;
 	 }
+	 // khi counter <0, thay doi led_status va reset counter ve thoi gian den sang tuong ung
 	 if (counter<=0) {
 		 //change led status and reset counter
 		 led_status--;
 		 if (led_status<0) led_status=2;
 		 counter=time[led_status];
 	 }
-	 HAL_Delay(1000);
+	 HAL_Delay(1000); //delay 1s
 
     /* USER CODE END WHILE */
 
